@@ -1,0 +1,207 @@
+module.exports = () => ({
+  entry: { main: './src/assests/scripts/index.js' },
+  optimization: {
+    minimizer: [
+      {
+        pluginDescriptor: { name: 'OptimizeCssAssetsWebpackPlugin' },
+        options: {
+          assetProcessors: [
+            {
+              phase: 'compilation.optimize-chunk-assets',
+              regExp: /\.css(\?.*)?$/i
+            }
+          ],
+          assetNameRegExp: /\.css(\?.*)?$/i,
+          cssProcessorOptions: {},
+          cssProcessorPluginOptions: {}
+        },
+        phaseAssetProcessors: {
+          'compilation.optimize-chunk-assets': [
+            {
+              phase: 'compilation.optimize-chunk-assets',
+              regExp: /\.css(\?.*)?$/i
+            }
+          ]
+        },
+        deleteAssetsMap: {}
+      },
+      {
+        options: {
+          test: /\.m?js(\?.*)?$/i,
+          terserOptions: { output: { comments: /^\**!|@preserve|@license|@cc_on/i } }
+        }
+      },
+      {
+        options: {
+          template: './src/main.html',
+          filename: 'index.html',
+          inject: 'body',
+          scriptLoading: 'blocking',
+          compile: true,
+          minify: {
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            removeComments: true
+          },
+          cache: true,
+          showErrors: true,
+          chunks: 'all',
+          chunksSortMode: 'auto',
+          meta: {},
+          title: 'Webpack App'
+        },
+        version: 4
+      }
+    ],
+    removeAvailableModules: true,
+    removeEmptyChunks: true,
+    mergeDuplicateChunks: true,
+    flagIncludedChunks: true,
+    occurrenceOrder: true,
+    sideEffects: true,
+    providedExports: true,
+    usedExports: true,
+    concatenateModules: true,
+    splitChunks: {
+      hidePathInfo: true,
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      automaticNameDelimiter: '~',
+      automaticNameMaxLength: 109,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        default: { reuseExistingChunk: true, minChunks: 2, priority: -20 },
+        vendors: {
+          automaticNamePrefix: 'vendors',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        }
+      }
+    },
+    noEmitOnErrors: true,
+    checkWasmTypes: true,
+    minimize: true,
+    nodeEnv: 'production'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sc|c)ss$/,
+        use: [
+          '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/node_modules/mini-css-extract-plugin/dist/loader.js',
+          { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: 'postcss.config.js' } }
+          },
+          { loader: 'sass-loader' }
+        ]
+      },
+      {
+        test: /\.(svg|png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: './assests/img'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        include: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/src',
+        use: {
+          loader: 'babel-loader',
+          options: { presets: [ '@babel/preset-env' ] }
+        }
+      },
+      { test: /\.html$/, use: [ 'html-loader' ] }
+    ],
+    unknownContextRequest: '.',
+    unknownContextRecursive: true,
+    unknownContextCritical: true,
+    exprContextRequest: '.',
+    exprContextRecursive: true,
+    exprContextCritical: true,
+    wrappedContextRegExp: /.*/,
+    wrappedContextRecursive: true,
+    defaultRules: [
+      { type: 'javascript/auto', resolve: {} },
+      {
+        test: /\.mjs$/i,
+        type: 'javascript/esm',
+        resolve: { mainFields: [ 'browser', 'main' ] }
+      },
+      { test: /\.json$/i, type: 'json' },
+      { test: /\.wasm$/i, type: 'webassembly/experimental' }
+    ]
+  },
+  plugins: [
+    { outputPath: './', name: 'webpack.config.dump', depth: 10 },
+    {
+      cleanStaleWebpackAssets: true,
+      protectWebpackAssets: true,
+      cleanOnceBeforeBuildPatterns: [ '**/*' ]
+    },
+    {
+      options: {
+        filename: '[name].styles.[chunkhash].css',
+        path: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/dist',
+        chunkFilename: '[name].styles.[chunkhash].css'
+      }
+    },
+    {}
+  ],
+  mode: 'production',
+  output: {
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    path: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/dist',
+    webassemblyModuleFilename: '[modulehash].module.wasm',
+    hotUpdateFunction: 'webpackHotUpdate',
+    jsonpFunction: 'webpackJsonp',
+    chunkCallbackName: 'webpackChunk',
+    globalObject: 'window',
+    libraryTarget: 'var',
+    sourceMapFilename: '[file].map[query]',
+    hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+    hotUpdateMainFilename: '[hash].hot-update.json',
+    chunkLoadTimeout: 120000,
+    hashFunction: 'md4',
+    hashDigest: 'hex',
+    hashDigestLength: 20
+  },
+  devtool: 'source-map',
+  context: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere',
+  target: 'web',
+  node: {
+    process: true,
+    global: true,
+    Buffer: true,
+    setImmediate: true,
+    __filename: 'mock',
+    __dirname: 'mock'
+  },
+  performance: { maxAssetSize: 250000, maxEntrypointSize: 250000, hints: 'warning' },
+  resolve: {
+    unsafeCache: true,
+    modules: [ 'node_modules' ],
+    extensions: [ '.wasm', '.mjs', '.js', '.json' ],
+    mainFiles: [ 'index' ],
+    aliasFields: [ 'browser' ],
+    mainFields: [ 'browser', 'module', 'main' ]
+  },
+  resolveLoader: {
+    unsafeCache: true,
+    mainFields: [ 'loader', 'main' ],
+    extensions: [ '.js', '.json' ],
+    mainFiles: [ 'index' ]
+  },
+  infrastructureLogging: { level: 'info' }
+})
