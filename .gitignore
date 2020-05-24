@@ -1,0 +1,7 @@
+.vscode
+node_modules
+
+# OS or Editor folders
+.DS_Store
+.vscode
+node_modules

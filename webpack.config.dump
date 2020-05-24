@@ -1,0 +1,167 @@
+module.exports = () => ({
+  entry: { main: './src/assests/scripts/index.js' },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 10000,
+      minChunks: 1,
+      maxAsyncRequests: Infinity,
+      automaticNameDelimiter: '~',
+      automaticNameMaxLength: 109,
+      maxInitialRequests: Infinity,
+      name: true,
+      cacheGroups: {
+        default: { reuseExistingChunk: true, minChunks: 2, priority: -20 },
+        vendors: {
+          automaticNamePrefix: 'vendors',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        }
+      }
+    },
+    removeEmptyChunks: true,
+    mergeDuplicateChunks: true,
+    providedExports: true,
+    namedModules: true,
+    namedChunks: true,
+    minimizer: [ {} ],
+    nodeEnv: 'development'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sc|c)ss$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader' },
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: 'postcss.config.js' } }
+          },
+          { loader: 'sass-loader' }
+        ]
+      },
+      {
+        test: /\.(svg|png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: './assests/img'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        include: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/src',
+        use: {
+          loader: 'babel-loader',
+          options: { presets: [ '@babel/preset-env' ] }
+        }
+      },
+      { test: /\.html$/, use: [ 'html-loader' ] }
+    ],
+    unknownContextRequest: '.',
+    unknownContextRecursive: true,
+    unknownContextCritical: true,
+    exprContextRequest: '.',
+    exprContextRecursive: true,
+    exprContextCritical: true,
+    wrappedContextRegExp: /.*/,
+    wrappedContextRecursive: true,
+    unsafeCache: true,
+    defaultRules: [
+      { type: 'javascript/auto', resolve: {} },
+      {
+        test: /\.mjs$/i,
+        type: 'javascript/esm',
+        resolve: { mainFields: [ 'browser', 'main' ] }
+      },
+      { test: /\.json$/i, type: 'json' },
+      { test: /\.wasm$/i, type: 'webassembly/experimental' }
+    ]
+  },
+  plugins: [
+    {
+      options: {
+        template: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/node_modules/html-webpack-plugin/lib/loader.js!/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/src/main.html',
+        filename: 'index.html',
+        inject: 'body',
+        scriptLoading: 'blocking',
+        compile: true,
+        minify: 'auto',
+        cache: true,
+        showErrors: true,
+        chunks: 'all',
+        chunksSortMode: 'auto',
+        meta: {},
+        title: 'Webpack App'
+      },
+      version: 4
+    },
+    { outputPath: './', name: 'webpack.config.dump', depth: 10 }
+  ],
+  mode: 'development',
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].[chunkhash].js',
+    path: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/dist',
+    webassemblyModuleFilename: '[modulehash].module.wasm',
+    hotUpdateFunction: 'webpackHotUpdate',
+    jsonpFunction: 'webpackJsonp',
+    chunkCallbackName: 'webpackChunk',
+    globalObject: 'window',
+    libraryTarget: 'var',
+    pathinfo: true,
+    sourceMapFilename: '[file].map[query]',
+    hotUpdateChunkFilename: '[id].[hash].hot-update.js',
+    hotUpdateMainFilename: '[hash].hot-update.json',
+    chunkLoadTimeout: 120000,
+    hashFunction: 'md4',
+    hashDigest: 'hex',
+    hashDigestLength: 20
+  },
+  devtool: 'eval-source-map',
+  devServer: {
+    contentBase: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/src',
+    hot: true,
+    port: 3000,
+    host: '0.0.0.0',
+    publicPath: '/',
+    filename: '[name].js',
+    clientLogLevel: 'info',
+    stats: {
+      colors: { level: 3, hasBasic: true, has256: true, has16m: true }
+    },
+    open: true
+  },
+  context: '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere',
+  cache: true,
+  target: 'web',
+  node: {
+    process: true,
+    global: true,
+    Buffer: true,
+    setImmediate: true,
+    __filename: 'mock',
+    __dirname: 'mock'
+  },
+  resolve: {
+    unsafeCache: true,
+    modules: [ 'node_modules' ],
+    extensions: [ '.wasm', '.mjs', '.js', '.json' ],
+    mainFiles: [ 'index' ],
+    aliasFields: [ 'browser' ],
+    mainFields: [ 'browser', 'module', 'main' ]
+  },
+  resolveLoader: {
+    unsafeCache: true,
+    mainFields: [ 'loader', 'main' ],
+    extensions: [ '.js', '.json' ],
+    mainFiles: [ 'index' ]
+  },
+  infrastructureLogging: { level: 'info' }
+})
