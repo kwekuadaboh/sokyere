@@ -1,0 +1,64 @@
+.nav {
+  
+  ul {
+    list-style-type: none;
+  }
+
+  &__item {
+    border-radius: .3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+
+    &:not(:last-child) {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  &__link {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding: .5rem 0;
+    border-radius: .3rem;
+    transition: color 300ms ease-in-out;
+
+    // border: 1px solid #000;
+
+    @include tab-port {
+      font-size: 1.8rem;
+    }
+
+    &:active {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(108,117,125,.5);
+    }
+
+    &:hover {
+      color: #2098D1;
+    }
+
+
+    &:hover svg {
+      fill: #000;
+    }
+
+    & span {
+      // margin-left: 1rem;
+      // display: inline-block;
+    }
+  }
+
+  &__icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0 1.2rem 0 30%;
+    fill: #2098D1;
+    transition: fill 300ms ease-in-out;
+  }
+}
