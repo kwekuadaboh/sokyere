@@ -1,0 +1,58 @@
+.section-resume {
+  // border: 1px solid blue;
+
+  &__title {
+    // margin-bottom: 10px;
+
+  }
+
+
+  &__title--sub {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    line-height: 1.6rem;
+  }
+
+
+  &__year {
+    background-color: #ccc;
+    display: inline-block;
+    padding: .2rem 1rem;
+    font-family: 'Courier New';
+  }
+
+  &__item {
+    padding: 0 0 2rem 2rem;
+    // border: 1px dotted red;
+    border-left: 2px solid #ccc;
+    position: relative;
+    margin-top: -2px;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: block;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #000;
+      top: 0px;
+      left: -9px;
+      // margin-bottom: 3rem;
+    }
+
+    & ul {
+      padding-left: 1.5rem;
+    }
+
+    & p {
+      margin-bottom: 1rem;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

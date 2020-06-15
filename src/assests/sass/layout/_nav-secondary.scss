@@ -1,0 +1,28 @@
+.nav-secondary {
+  list-style-type: none;
+
+  &--item {
+    position: relative;
+
+    &::before {   //// chevron 
+      display: inline-block;
+      content: "";
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      border-color: #2098D1;
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      transform: rotate(-45deg);
+      margin-right: 1rem;
+    }
+
+  }
+
+  & strong {
+    letter-spacing: 1.5px;
+  }
+
+
+
+}

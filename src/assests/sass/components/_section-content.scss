@@ -1,0 +1,33 @@
+.section-content {
+ 
+  &--title {
+    font-weight: 500;
+    color: #2098D1;
+    font-size: 2.0rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    width: max-content;
+
+    &::after  {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 80%;
+      background-color: rgba(#000, .7);
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+    }
+  }
+
+  &--subtitle {
+    font-weight: 700;
+    font-size:  1.8rem;
+    letter-spacing: 1px;
+    @include tab-land {
+    }
+  }
+  
+  // border: 1px solid #000;
+  padding-bottom: 1.8rem;
+}

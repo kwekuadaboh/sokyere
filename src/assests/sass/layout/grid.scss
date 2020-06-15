@@ -4,6 +4,7 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  // border: 1px solid #000;
 
   @include phone-land {
     max-width: 540px;
@@ -27,7 +28,7 @@
   margin-left: -15px;
   flex-wrap: wrap;
 
-  border: 1px dotted blue;
+  // border: 1px dotted blue;
 }
 
 /////// MOBILE FIRST STYLES 
@@ -36,6 +37,9 @@
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+
+
+  // border: 1px solid red;
 }
 
 
@@ -43,16 +47,21 @@
   .col-lg-4 {
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
+    // border: 1px solid red;
   }
 
   .col-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
+
+
+    // border: 1px solid red;
   }
 
   .col-lg-8 {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
+    // border: 1px solid red;
   }
 
 }
