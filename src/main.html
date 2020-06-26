@@ -37,7 +37,7 @@
     <nav class="nav" id="nav">
       <ul class="">
         <li class="nav__item ">
-          <a href="" class="nav__link">
+          <a href="#about" class="nav__link">
             <svg class="nav__icon">
               <use xlink:href="/assests/img/sprites.svg#icon-user"></use>
             </svg>
@@ -46,7 +46,7 @@
         </li>
 
         <li class="nav__item">
-          <a href="" class="nav__link">
+          <a href="#resume" class="nav__link">
             <svg class="nav__icon">
               <use xlink:href="/assests/img/sprites.svg#icon-file-empty"></use>
             </svg>
@@ -54,7 +54,7 @@
           </a>
         </li>
         <li class="nav__item">
-          <a href="" class="nav__link">
+          <a href="#contact" class="nav__link">
             <svg class="nav__icon">
               <use xlink:href="/assests/img/sprites.svg#icon-phone"></use>
             </svg>
@@ -216,8 +216,38 @@
             possimus ea officia, atque ut autem quae, neque commodi id deserunt corporis adipisci ad distinctio?
           </p>
         </div>
-      </div>
 
+        <div class="row">
+          <div class="col">
+            <form action="#" method="post" class="form">
+              <div class="form__row">
+                <div class="col-md-6 form__group">
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" class="form__control">
+                </div>
+                <div class="col-md-6 form__group">
+                  <label for="email">Your Email</label>
+                  <input id="email" name="email" type="email" class="form__control">
+                </div>
+              </div>
+              <div class="form__group">
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" class="form__control">
+              </div>
+              <div class="form__group">
+                <label for="message">Message</label>
+                <textarea name="Message" id="message" rows="" class="form__control form__textarea"></textarea>
+              </div>
+              <div class="text-center">
+                <button class="form__submit form__button" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+
+      </div>
     </section>
 
   </main>

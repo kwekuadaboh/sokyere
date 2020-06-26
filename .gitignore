@@ -6,3 +6,6 @@ node_modules
 .vscode
 node_modules
 webpack.config.dump
+test.scss
+webpack.config.dump
+postcss.config.js
