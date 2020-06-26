@@ -32,14 +32,35 @@
 }
 
 /////// MOBILE FIRST STYLES 
-.col-lg-4, .col-lg-8, .col-lg-6 {
+
+.col, .col-md-6, .col-lg-4, .col-lg-8, .col-lg-6 {
   position: relative;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-
-
   // border: 1px solid red;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+
+
+
+
+
+
+///////RESPONSIVE GRID 
+
+@include tab-port {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 
 
@@ -47,21 +68,16 @@
   .col-lg-4 {
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
-    // border: 1px solid red;
   }
 
   .col-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
-
-
-    // border: 1px solid red;
   }
 
   .col-lg-8 {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
-    // border: 1px solid red;
   }
 
 }
