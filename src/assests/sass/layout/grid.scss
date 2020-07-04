@@ -31,9 +31,13 @@
   // border: 1px dotted blue;
 }
 
-/////// MOBILE FIRST STYLES 
+/////// MOBILE FIRST STYLES
 
-.col, .col-md-6, .col-lg-4, .col-lg-8, .col-lg-6 {
+.col,
+.col-md-6,
+.col-lg-4,
+.col-lg-8,
+.col-lg-6 {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -48,13 +52,7 @@
   max-width: 100%;
 }
 
-
-
-
-
-
-
-///////RESPONSIVE GRID 
+///////RESPONSIVE GRID
 
 @include tab-port {
   .col-md-6 {
@@ -63,8 +61,7 @@
   }
 }
 
-
-@include tab-land { 
+@include tab-land {
   .col-lg-4 {
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
@@ -79,5 +76,4 @@
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
-
 }

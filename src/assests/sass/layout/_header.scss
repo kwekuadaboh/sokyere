@@ -2,24 +2,29 @@
   width: 30rem;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -300px;
   overflow-y: auto;
   height: 100vh;
-  background-color:  #f5f6f7;
+  background-color: rgb(245, 246, 247);
   z-index: 9;
-
-  display: none;
+  transition: all ease-in-out 500ms;
 
   @include desktop {
-    display: block;
-    width: 45em;
+    left: 0;
   }
-  // border: 1px solid red;
-  
-
 
   &__avater {
     display: block;
+    transform: translate3d(0, -18rem, 0);
+    @include easeOut;
+
+    &.show-Avater {
+      transform: translate3d(0, 0, 0);
+    }
+
+    @include desktop {
+      transform: translate3d(0, 0, 0);
+    }
     // margin-bottom: 4rem;
 
     &:focus {
@@ -27,21 +32,19 @@
       outline-style: none;
     }
 
-
     &--img {
       display: block;
       width: 12rem;
       border-radius: 50%;
       border: 3px solid #bfb7a6;
       margin: 1rem auto;
-
     }
 
     &--text {
       font-size: 1.5rem;
       text-transform: uppercase;
-      text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
-        0px -4px 10px rgba(255,255,255,0.3);
+      text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
 
       @include tab-port {
         font-size: 2rem;
@@ -49,9 +52,8 @@
       }
     }
   }
+  //SHOW HEADER ON MOBILE SCREEN
+  &.show-Header {
+    left: 0;
+  }
 }
-
-
-
-
-

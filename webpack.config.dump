@@ -92,12 +92,12 @@ module.exports = () => ({
         test: /\.(sc|c)ss$/,
         use: [
           '/home/kae/Desktop/WEB-dev/1A-PROJECTS/SOkyere/node_modules/mini-css-extract-plugin/dist/loader.js',
-          { loader: 'css-loader' },
+          { loader: 'css-loader', options: { sourceMap: true } },
           {
             loader: 'postcss-loader',
-            options: { config: { path: 'postcss.config.js' } }
+            options: { sourceMap: true, config: { path: 'postcss.config.js' } }
           },
-          { loader: 'sass-loader' }
+          { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       },
       {

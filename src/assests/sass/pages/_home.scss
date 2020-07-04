@@ -1,16 +1,16 @@
-.main {  // test 
+.main {
+  // test
   font-size: 1.6rem;
+  text-align: left;
+  // margin-left: 30rem;
 
-  // border: 1px dotted blue;
   @include desktop {
-    margin-left: 45rem;
+    margin-left: 30rem;
     font-size: 2rem;
-
-
   }
 
-  & > section {
-    margin-bottom: 2rem;
-    // border: 1px dashed #000;
+  & section {
+    padding: 3rem 0;
+    overflow: hidden;
   }
 }

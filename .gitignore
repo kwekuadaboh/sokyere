@@ -9,3 +9,4 @@ webpack.config.dump
 test.scss
 webpack.config.dump
 postcss.config.js
+package-lock.js
