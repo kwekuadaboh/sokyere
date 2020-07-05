@@ -1,5 +1,6 @@
 const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
+var webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -85,6 +86,10 @@ let config = {
   },
 
   plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    }),
     new HtmlWebpackPlugin({
       template: "./src/main.html",
       // minify: false

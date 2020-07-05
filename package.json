@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "browserslist": "^4.12.0",
+    "jquery": "^3.4.0",
     "normalize.css": "^8.0.1"
   }
 }

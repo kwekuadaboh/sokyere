@@ -15,6 +15,6 @@ navToggle.addEventListener("click", function (e) {
   headerAvater.classList.toggle("show-Avater");
 });
 
-// for (var i = 0; i < navLinks.length; i++) {
-//   navLinks[i].addEventListener("click", function () {});
-// }
+$(document).on("click", "#nav__items .nav__item", function () {
+  $(this).addClass("selected").siblings().removeClass("selected");
+});

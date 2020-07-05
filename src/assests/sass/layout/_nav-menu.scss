@@ -21,6 +21,13 @@
     &.show-navItems {
       transform: translate3d(0, 0, 0);
     }
+
+    &.selected a {
+      color: #2098d1;
+    }
+    &.selected svg {
+      fill: #000;
+    }
   }
 
   &__link {
@@ -54,10 +61,6 @@
     &:hover svg {
       fill: #000;
     }
-  }
-
-  &__selected {
-    color: #2098d1;
   }
 
   &__icon {

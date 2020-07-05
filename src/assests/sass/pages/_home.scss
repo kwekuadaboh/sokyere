@@ -1,8 +1,6 @@
 .main {
-  // test
   font-size: 1.6rem;
   text-align: left;
-  // margin-left: 30rem;
 
   @include desktop {
     margin-left: 30rem;
@@ -12,5 +10,24 @@
   & section {
     padding: 3rem 0;
     overflow: hidden;
+  }
+}
+
+///////JQuery TEST
+.test-container {
+  & .test {
+    color: blue;
+    font-size: 2rem;
+    margin: 2rem auto;
+    border: 1px solid red;
+    width: max-content;
+  }
+
+  & button {
+    padding: 1rem;
+    border: 0;
+    font-size: 1.2rem;
+    background-color: #4caf50;
+    border-radius: 3px;
   }
 }
